@@ -53,6 +53,7 @@ public class InRecordServiceImpl implements InRecordService {
         for (BookInRecord inRecord : inRecordList) {
             InRecordVO inRecordVO = new InRecordVO();
             BeanUtils.copyProperties(inRecord, inRecordVO);
+            inRecordVO.setRecordDate(inRecord.getCreateTime());
             processData(inRecordVO);
             inRecordVOList.add(inRecordVO);
         }
@@ -62,6 +63,7 @@ public class InRecordServiceImpl implements InRecordService {
     private InRecordVO processData(InRecordVO inRecordVO) {
         BookInRecordExample bookInRecordExample = new BookInRecordExample();
         BookInRecordExample.Criteria bookInRecordExampleCriteria = bookInRecordExample.createCriteria();
+        bookInRecordExampleCriteria.andIdEqualTo(inRecordVO.getId());
         List<BookInRecord> bookInRecordList = bookInRecordMapper.selectByExample(bookInRecordExample);
         List<BookInRecordVO> bookInRecordVOList = new ArrayList<>();
         //设置记录中的每一本书
@@ -120,6 +122,7 @@ public class InRecordServiceImpl implements InRecordService {
         BookInRecord inRecord = bookInRecordMapper.selectByPrimaryKey(id);
         InRecordVO inRecordVO = new InRecordVO();
         BeanUtils.copyProperties(inRecord, inRecordVO);
+        inRecordVO.setRecordDate(inRecord.getCreateTime());
         return processData(inRecordVO);
     }
 
@@ -127,6 +130,8 @@ public class InRecordServiceImpl implements InRecordService {
     public void save(InRecordVO inRecordVO) {
         for (BookInRecordVO bookInRecordVO : inRecordVO.getBookInRecordVOList()) {
             bookInRecordVO.setBookId(bookInRecordVO.getBookVO().getId());
+            bookInRecordVO.setCreateBy(1);
+            bookInRecordVO.setCreateTime(new Date());
             bookInRecordMapper.insert(bookInRecordVO);
             //修改书的库存
             int bookId = bookInRecordVO.getBookVO().getId();

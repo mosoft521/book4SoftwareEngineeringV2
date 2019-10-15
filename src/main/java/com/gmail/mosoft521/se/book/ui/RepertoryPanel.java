@@ -123,6 +123,7 @@ public class RepertoryPanel extends CommonPanel {
         JScrollPane bookScrollPane = new JScrollPane(this.bookInTable);
         bookScrollPane.setPreferredSize(new Dimension(1000, 120));
         downBox2.add(bookScrollPane);
+        downBox2.setVisible(false);
 
         /*******************************************************/
         Box downBox3 = new Box(BoxLayout.X_AXIS);
