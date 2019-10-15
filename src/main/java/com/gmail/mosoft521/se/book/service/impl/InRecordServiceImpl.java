@@ -46,13 +46,11 @@ public class InRecordServiceImpl implements InRecordService {
     public List<InRecordVO> getAll(Date date) {
         //得到下一天
         Date nextDate = DateUtil.getNextDate(date);
-        InRecordExample inRecordExample = new InRecordExample();
-        InRecordExample.Criteria inRecordExampleCriteria = inRecordExample.createCriteria();
-        inRecordExampleCriteria.andRecordDateGreaterThanOrEqualTo(date);
-        inRecordExampleCriteria.andRecordDateLessThanOrEqualTo(nextDate);
-        List<InRecord> inRecordList = inRecordMapper.selectByExample(inRecordExample);
+        BookInRecordExample bookInRecordExample = new BookInRecordExample();
+        BookInRecordExample.Criteria inRecordExampleCriteria = bookInRecordExample.createCriteria();
+        List<BookInRecord> inRecordList = bookInRecordMapper.selectByExample(bookInRecordExample);
         List<InRecordVO> inRecordVOList = new ArrayList<>();
-        for (InRecord inRecord : inRecordList) {
+        for (BookInRecord inRecord : inRecordList) {
             InRecordVO inRecordVO = new InRecordVO();
             BeanUtils.copyProperties(inRecord, inRecordVO);
             processData(inRecordVO);
@@ -64,7 +62,6 @@ public class InRecordServiceImpl implements InRecordService {
     private InRecordVO processData(InRecordVO inRecordVO) {
         BookInRecordExample bookInRecordExample = new BookInRecordExample();
         BookInRecordExample.Criteria bookInRecordExampleCriteria = bookInRecordExample.createCriteria();
-        bookInRecordExampleCriteria.andInRecordIdEqualTo(inRecordVO.getId());
         List<BookInRecord> bookInRecordList = bookInRecordMapper.selectByExample(bookInRecordExample);
         List<BookInRecordVO> bookInRecordVOList = new ArrayList<>();
         //设置记录中的每一本书
@@ -120,7 +117,7 @@ public class InRecordServiceImpl implements InRecordService {
 
     @Override
     public InRecordVO get(int id) {
-        InRecord inRecord = inRecordMapper.selectByPrimaryKey(id);
+        BookInRecord inRecord = bookInRecordMapper.selectByPrimaryKey(id);
         InRecordVO inRecordVO = new InRecordVO();
         BeanUtils.copyProperties(inRecord, inRecordVO);
         return processData(inRecordVO);
@@ -128,9 +125,7 @@ public class InRecordServiceImpl implements InRecordService {
 
     @Override
     public void save(InRecordVO inRecordVO) {
-        inRecordMapper.insert(inRecordVO);
         for (BookInRecordVO bookInRecordVO : inRecordVO.getBookInRecordVOList()) {
-            bookInRecordVO.setInRecordId(inRecordVO.getId());
             bookInRecordVO.setBookId(bookInRecordVO.getBookVO().getId());
             bookInRecordMapper.insert(bookInRecordVO);
             //修改书的库存
@@ -142,5 +137,4 @@ public class InRecordServiceImpl implements InRecordService {
             bookMapper.updateByPrimaryKeySelective(book4Update);
         }
     }
-
 }

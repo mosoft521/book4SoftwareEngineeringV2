@@ -34,7 +34,7 @@ public class SaleRecordServiceImpl implements SaleRecordService {
 
     @Override
     public SaleRecordVO get(int id) {
-        SaleRecord saleRecord = saleRecordMapper.selectByPrimaryKey(id);
+        BookSaleRecord saleRecord = bookSaleRecordMapper.selectByPrimaryKey(id);
         SaleRecordVO saleRecordVO = new SaleRecordVO();
         BeanUtils.copyProperties(saleRecord, saleRecordVO);
         return processDatas(saleRecordVO);
@@ -45,13 +45,11 @@ public class SaleRecordServiceImpl implements SaleRecordService {
     public List<SaleRecordVO> getAll(Date date) {
         //得到下一天
         Date nextDate = DateUtil.getNextDate(date);
-        SaleRecordExample saleRecordExample = new SaleRecordExample();
-        SaleRecordExample.Criteria saleRecordExampleCriteria = saleRecordExample.createCriteria();
-        saleRecordExampleCriteria.andRecordDateGreaterThanOrEqualTo(date);
-        saleRecordExampleCriteria.andRecordDateLessThanOrEqualTo(nextDate);
-        List<SaleRecord> records = saleRecordMapper.selectByExample(saleRecordExample);
+        BookSaleRecordExample bookSaleRecordExample = new BookSaleRecordExample();
+        BookSaleRecordExample.Criteria bookSaleRecordExampleCriteria = bookSaleRecordExample.createCriteria();
+        List<BookSaleRecord> records = bookSaleRecordMapper.selectByExample(bookSaleRecordExample);
         List<SaleRecordVO> saleRecordVOList = new ArrayList<>();
-        for (SaleRecord saleRecord : records) {
+        for (BookSaleRecord saleRecord : records) {
             SaleRecordVO saleRecordVO = new SaleRecordVO();
             BeanUtils.copyProperties(saleRecord, saleRecordVO);
             processDatas(saleRecordVO);
@@ -65,7 +63,6 @@ public class SaleRecordServiceImpl implements SaleRecordService {
         //查找该记录所对应的书的销售记录
         BookSaleRecordExample bookSaleRecordExample = new BookSaleRecordExample();
         BookSaleRecordExample.Criteria bookSaleRecordExampleCriteria = bookSaleRecordExample.createCriteria();
-        bookSaleRecordExampleCriteria.andSaleRecordIdEqualTo(saleRecordVO.getId());
         List<BookSaleRecord> bookSaleRecordList = bookSaleRecordMapper.selectByExample(bookSaleRecordExample);
         List<BookSaleRecordVO> bookSaleRecordVOList = new ArrayList<>();
         for (BookSaleRecord bookSaleRecord : bookSaleRecordList) {
@@ -143,12 +140,9 @@ public class SaleRecordServiceImpl implements SaleRecordService {
                 throw new BusinessException(book.getBookName() + " 的库存不够");
             }
         }
-        //先保存交易记录
-        saleRecordMapper.insert(saleRecordVO);
         //再保存书的交易记录
         for (BookSaleRecordVO bookSaleRecordVO : saleRecordVO.getBookSaleRecordVOList()) {
             //设置销售记录id
-            bookSaleRecordVO.setSaleRecordId(saleRecordVO.getId());
             bookSaleRecordVO.setBookId(bookSaleRecordVO.getBookVO().getId());
             bookSaleRecordMapper.insert(bookSaleRecordVO);
             //修改书的库存
