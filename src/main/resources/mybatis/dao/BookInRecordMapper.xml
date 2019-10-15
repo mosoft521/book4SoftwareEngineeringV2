@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.se.book.entity.BookInRecord">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="BOOK_ID" jdbcType="INTEGER" property="bookId" />
-    <result column="IN_RECORD_ID" jdbcType="INTEGER" property="inRecordId" />
     <result column="IN_SUM" jdbcType="INTEGER" property="inSum" />
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="CREATE_BY" jdbcType="INTEGER" property="createBy" />
@@ -68,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, BOOK_ID, IN_RECORD_ID, IN_SUM, CREATE_TIME, CREATE_BY
+    ID, BOOK_ID, IN_SUM, CREATE_TIME, CREATE_BY
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.se.book.entity.BookInRecordExample" resultMap="BaseResultMap">
     select
@@ -104,10 +103,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_book_in_record (BOOK_ID, IN_RECORD_ID, IN_SUM, 
-      CREATE_TIME, CREATE_BY)
-    values (#{bookId,jdbcType=INTEGER}, #{inRecordId,jdbcType=INTEGER}, #{inSum,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=INTEGER})
+    insert into t_book_in_record (BOOK_ID, IN_SUM, CREATE_TIME, 
+      CREATE_BY)
+    values (#{bookId,jdbcType=INTEGER}, #{inSum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.se.book.entity.BookInRecord">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -117,9 +116,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="bookId != null">
         BOOK_ID,
-      </if>
-      <if test="inRecordId != null">
-        IN_RECORD_ID,
       </if>
       <if test="inSum != null">
         IN_SUM,
@@ -134,9 +130,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bookId != null">
         #{bookId,jdbcType=INTEGER},
-      </if>
-      <if test="inRecordId != null">
-        #{inRecordId,jdbcType=INTEGER},
       </if>
       <if test="inSum != null">
         #{inSum,jdbcType=INTEGER},
@@ -164,9 +157,6 @@
       <if test="record.bookId != null">
         BOOK_ID = #{record.bookId,jdbcType=INTEGER},
       </if>
-      <if test="record.inRecordId != null">
-        IN_RECORD_ID = #{record.inRecordId,jdbcType=INTEGER},
-      </if>
       <if test="record.inSum != null">
         IN_SUM = #{record.inSum,jdbcType=INTEGER},
       </if>
@@ -185,7 +175,6 @@
     update t_book_in_record
     set ID = #{record.id,jdbcType=INTEGER},
       BOOK_ID = #{record.bookId,jdbcType=INTEGER},
-      IN_RECORD_ID = #{record.inRecordId,jdbcType=INTEGER},
       IN_SUM = #{record.inSum,jdbcType=INTEGER},
       CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
       CREATE_BY = #{record.createBy,jdbcType=INTEGER}
@@ -198,9 +187,6 @@
     <set>
       <if test="bookId != null">
         BOOK_ID = #{bookId,jdbcType=INTEGER},
-      </if>
-      <if test="inRecordId != null">
-        IN_RECORD_ID = #{inRecordId,jdbcType=INTEGER},
       </if>
       <if test="inSum != null">
         IN_SUM = #{inSum,jdbcType=INTEGER},
@@ -217,7 +203,6 @@
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.se.book.entity.BookInRecord">
     update t_book_in_record
     set BOOK_ID = #{bookId,jdbcType=INTEGER},
-      IN_RECORD_ID = #{inRecordId,jdbcType=INTEGER},
       IN_SUM = #{inSum,jdbcType=INTEGER},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       CREATE_BY = #{createBy,jdbcType=INTEGER}

@@ -4,14 +4,11 @@ import com.gmail.mosoft521.se.book.commons.DateUtil;
 import com.gmail.mosoft521.se.book.dao.BookInRecordMapper;
 import com.gmail.mosoft521.se.book.dao.BookMapper;
 import com.gmail.mosoft521.se.book.dao.BookTypeMapper;
-import com.gmail.mosoft521.se.book.dao.InRecordMapper;
 import com.gmail.mosoft521.se.book.dao.PublisherMapper;
 import com.gmail.mosoft521.se.book.entity.Book;
 import com.gmail.mosoft521.se.book.entity.BookInRecord;
 import com.gmail.mosoft521.se.book.entity.BookInRecordExample;
 import com.gmail.mosoft521.se.book.entity.BookType;
-import com.gmail.mosoft521.se.book.entity.InRecord;
-import com.gmail.mosoft521.se.book.entity.InRecordExample;
 import com.gmail.mosoft521.se.book.entity.Publisher;
 import com.gmail.mosoft521.se.book.service.InRecordService;
 import com.gmail.mosoft521.se.book.vo.BookInRecordVO;
@@ -32,8 +29,6 @@ import java.util.List;
 @Service("inRecordService")
 @Transactional
 public class InRecordServiceImpl implements InRecordService {
-    @Autowired
-    private InRecordMapper inRecordMapper;
 
     @Autowired
     private BookInRecordMapper bookInRecordMapper;

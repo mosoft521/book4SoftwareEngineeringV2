@@ -7,8 +7,6 @@ public class BookSaleRecord {
 
     private Integer bookId;
 
-    private Integer saleRecordId;
-
     private Integer tradeSum;
 
     private Date createTime;
@@ -29,14 +27,6 @@ public class BookSaleRecord {
 
     public void setBookId(Integer bookId) {
         this.bookId = bookId;
-    }
-
-    public Integer getSaleRecordId() {
-        return saleRecordId;
-    }
-
-    public void setSaleRecordId(Integer saleRecordId) {
-        this.saleRecordId = saleRecordId;
     }
 
     public Integer getTradeSum() {

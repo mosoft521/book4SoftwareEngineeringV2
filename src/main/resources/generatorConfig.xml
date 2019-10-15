@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="e:\java\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+    <classPathEntry location="d:\java\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -14,7 +14,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/book?useUnicode=true"
+                        connectionURL="jdbc:mysql://localhost:3306/bookV2?useUnicode=true"
                         userId="root"
                         password="admin">
         </jdbcConnection>
@@ -23,17 +23,17 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.gmail.mosoft521.se.book.entity" targetProject="E:\ws_ij_practice\book4SoftwareEngineering\src\main\java">
+        <javaModelGenerator targetPackage="com.gmail.mosoft521.se.book.entity" targetProject="D:\ws_ij_practise\book4SoftwareEngineeringV2\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="" value=""/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mybatis.dao" targetProject="E:\ws_ij_practice\book4SoftwareEngineering\src\main\resources">
+        <sqlMapGenerator targetPackage="mybatis.dao" targetProject="D:\ws_ij_practise\book4SoftwareEngineeringV2\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.gmail.mosoft521.se.book.dao" targetProject="E:\ws_ij_practice\book4SoftwareEngineering\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.gmail.mosoft521.se.book.dao" targetProject="D:\ws_ij_practise\book4SoftwareEngineeringV2\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -80,13 +80,7 @@
         <table schema="" tableName="t_book_type" domainObjectName="BookType">
             <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
         </table>
-        <table schema="" tableName="t_in_record" domainObjectName="InRecord">
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
-        </table>
         <table schema="" tableName="t_publisher" domainObjectName="Publisher">
-            <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="" tableName="t_sale_record" domainObjectName="SaleRecord">
             <generatedKey column="ID" sqlStatement="MySql" identity="true"/>
         </table>
         <table schema="" tableName="t_user" domainObjectName="User">

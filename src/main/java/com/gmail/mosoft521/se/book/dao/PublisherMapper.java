@@ -4,9 +4,7 @@ import com.gmail.mosoft521.se.book.entity.Publisher;
 import com.gmail.mosoft521.se.book.entity.PublisherExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface PublisherMapper {
     long countByExample(PublisherExample example);
 

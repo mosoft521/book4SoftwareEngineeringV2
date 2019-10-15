@@ -7,8 +7,6 @@ public class BookInRecord {
 
     private Integer bookId;
 
-    private Integer inRecordId;
-
     private Integer inSum;
 
     private Date createTime;
@@ -29,14 +27,6 @@ public class BookInRecord {
 
     public void setBookId(Integer bookId) {
         this.bookId = bookId;
-    }
-
-    public Integer getInRecordId() {
-        return inRecordId;
-    }
-
-    public void setInRecordId(Integer inRecordId) {
-        this.inRecordId = inRecordId;
     }
 
     public Integer getInSum() {

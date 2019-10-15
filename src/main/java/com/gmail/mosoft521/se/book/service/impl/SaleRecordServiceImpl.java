@@ -4,12 +4,9 @@ import com.gmail.mosoft521.se.book.commons.BusinessException;
 import com.gmail.mosoft521.se.book.commons.DateUtil;
 import com.gmail.mosoft521.se.book.dao.BookMapper;
 import com.gmail.mosoft521.se.book.dao.BookSaleRecordMapper;
-import com.gmail.mosoft521.se.book.dao.SaleRecordMapper;
 import com.gmail.mosoft521.se.book.entity.Book;
 import com.gmail.mosoft521.se.book.entity.BookSaleRecord;
 import com.gmail.mosoft521.se.book.entity.BookSaleRecordExample;
-import com.gmail.mosoft521.se.book.entity.SaleRecord;
-import com.gmail.mosoft521.se.book.entity.SaleRecordExample;
 import com.gmail.mosoft521.se.book.service.SaleRecordService;
 import com.gmail.mosoft521.se.book.vo.BookSaleRecordVO;
 import com.gmail.mosoft521.se.book.vo.BookVO;
@@ -29,9 +26,6 @@ import java.util.List;
 @Service("saleRecordService")
 @Transactional
 public class SaleRecordServiceImpl implements SaleRecordService {
-    @Autowired
-    private SaleRecordMapper saleRecordMapper;
-
     @Autowired
     private BookSaleRecordMapper bookSaleRecordMapper;
 

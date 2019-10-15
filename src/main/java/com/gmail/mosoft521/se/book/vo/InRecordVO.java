@@ -1,10 +1,17 @@
 package com.gmail.mosoft521.se.book.vo;
 
-import com.gmail.mosoft521.se.book.entity.InRecord;
-
+import java.util.Date;
 import java.util.List;
 
-public class InRecordVO extends InRecord {
+public class InRecordVO {
+    private Integer id;
+
+    private Date recordDate;
+
+    private Date createTime;
+
+    private Integer createBy;
+
     //入库的总数量
     private int amount;
 
@@ -15,6 +22,38 @@ public class InRecordVO extends InRecord {
     private String bookNames;
 
     public InRecordVO() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getRecordDate() {
+        return recordDate;
+    }
+
+    public void setRecordDate(Date recordDate) {
+        this.recordDate = recordDate;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(Integer createBy) {
+        this.createBy = createBy;
     }
 
     public int getAmount() {

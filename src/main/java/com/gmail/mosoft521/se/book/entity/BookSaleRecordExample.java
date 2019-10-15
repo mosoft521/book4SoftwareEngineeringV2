@@ -225,66 +225,6 @@ public class BookSaleRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andSaleRecordIdIsNull() {
-            addCriterion("SALE_RECORD_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdIsNotNull() {
-            addCriterion("SALE_RECORD_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdEqualTo(Integer value) {
-            addCriterion("SALE_RECORD_ID =", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdNotEqualTo(Integer value) {
-            addCriterion("SALE_RECORD_ID <>", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdGreaterThan(Integer value) {
-            addCriterion("SALE_RECORD_ID >", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("SALE_RECORD_ID >=", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdLessThan(Integer value) {
-            addCriterion("SALE_RECORD_ID <", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdLessThanOrEqualTo(Integer value) {
-            addCriterion("SALE_RECORD_ID <=", value, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdIn(List<Integer> values) {
-            addCriterion("SALE_RECORD_ID in", values, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdNotIn(List<Integer> values) {
-            addCriterion("SALE_RECORD_ID not in", values, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdBetween(Integer value1, Integer value2) {
-            addCriterion("SALE_RECORD_ID between", value1, value2, "saleRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleRecordIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("SALE_RECORD_ID not between", value1, value2, "saleRecordId");
-            return (Criteria) this;
-        }
-
         public Criteria andTradeSumIsNull() {
             addCriterion("TRADE_SUM is null");
             return (Criteria) this;

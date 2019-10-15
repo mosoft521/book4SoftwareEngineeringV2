@@ -225,66 +225,6 @@ public class BookInRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andInRecordIdIsNull() {
-            addCriterion("IN_RECORD_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdIsNotNull() {
-            addCriterion("IN_RECORD_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdEqualTo(Integer value) {
-            addCriterion("IN_RECORD_ID =", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdNotEqualTo(Integer value) {
-            addCriterion("IN_RECORD_ID <>", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdGreaterThan(Integer value) {
-            addCriterion("IN_RECORD_ID >", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("IN_RECORD_ID >=", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdLessThan(Integer value) {
-            addCriterion("IN_RECORD_ID <", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdLessThanOrEqualTo(Integer value) {
-            addCriterion("IN_RECORD_ID <=", value, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdIn(List<Integer> values) {
-            addCriterion("IN_RECORD_ID in", values, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdNotIn(List<Integer> values) {
-            addCriterion("IN_RECORD_ID not in", values, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdBetween(Integer value1, Integer value2) {
-            addCriterion("IN_RECORD_ID between", value1, value2, "inRecordId");
-            return (Criteria) this;
-        }
-
-        public Criteria andInRecordIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("IN_RECORD_ID not between", value1, value2, "inRecordId");
-            return (Criteria) this;
-        }
-
         public Criteria andInSumIsNull() {
             addCriterion("IN_SUM is null");
             return (Criteria) this;
